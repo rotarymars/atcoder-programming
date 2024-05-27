@@ -29,32 +29,20 @@ def returnurl():
             return f"https://atcoder.jp/contests/{nowdirectory[0:(len(nowdirectory)-1-i)]}/tasks/{nowdirectory}"
 def savetotest(ar):
     pathtotest = "./test"
-    for i in range(0,len(ar),2):
-        with open(f"{pathtotest}/sample-{i//2}.in",mode="w",newline="\n") as f:
-            f.write(ar[i])
-        with open(f"{pathtotest}/sample-{i//2}.out",mode="w",newline="\n") as f:
-            f.write(ar[i + 1])
-def getsample(url,session):
-    result = session.get(url)
-    soup = BeautifulSoup(result.text,"lxml")
-    rawsample = list(soup.find_all("pre"))
-    sample = []
-    for i in rawsample:
-        if i.string is None:
-            continue
-        sample.append(i.string)
-    sample = sample[0:len(sample)//2]
-    return sample
-
+    for i in range(len(ar)//2):
+        with open(f"{pathtotest}/sample-{i}.in",mode="w",newline="\n") as f:
+            f.write(ar[2 * i])
+        with open(f"{pathtotest}/sample-{i}.out",mode="w",newline="\n") as f:
+            f.write(ar[2 * i + 1])
 def main():
     mysession=getsession()
     if mysession == -1:
         print("Failed to get session. Aborting...")
         return 1
-    problem_url = returnurl()
-    print(problem_url)
-    sampledata = getsample(problem_url,mysession)
-    savetotest(sampledata)
+    problem_url = "https://atcoder.jp/contests/abc355/submissions"
+    result = mysession.get(problem_url)
+    print(result.text)
+    print(result.url)
 
 if __name__=="__main__":
     main()
