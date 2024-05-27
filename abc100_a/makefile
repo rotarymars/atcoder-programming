@@ -1,7 +1,7 @@
 SRC = ./main.cpp
 BIN = ./a.exe
 DEBUG_BIN = ./debug.exe
-SAMPLE = ./test
+SAMPLE = ./test/sample-1.in
 all: $(BIN) $(SAMPLE)
 	./test-sample.sh $(BIN) $(SRC)
 debugall: $(DEBUG_BIN) $(SAMPLE)
@@ -10,5 +10,5 @@ $(BIN): $(SRC)
 	g++ -std=gnu++23 -o $(BIN) $(SRC)
 $(DEBUG_BIN): $(SRC)
 	g++ -std=gnu++23 -o $(DEBUG_BIN) $(SRC)
-for_python:
-	./test-sample.sh "python main.py" main.py
+$(SAMPLE):
+	python ../download.py
