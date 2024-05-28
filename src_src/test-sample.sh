@@ -1,7 +1,7 @@
 #!/bin/bash
 BIN=$1
 if [ -z "${BIN}" ] ; then
-    echo USAGE: run_test.sh [binary_path]
+    echo USAGE: run_test.sh [binary_path] [source_path]
     exit 1
 fi
 set -u
