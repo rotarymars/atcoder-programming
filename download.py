@@ -21,9 +21,9 @@ def getsession():
     else:
         username=input("Input your username: ")
         password = input("Input your password: ")
-        with open(USERPATH,mode="w",newline="\r\n") as f:
+        with open(USERPATH,mode="w",newline="\n") as f:
             f.write(username)
-        with open(PASSWORDPATH,mode="w",newline="\r\n") as f:
+        with open(PASSWORDPATH,mode="w",newline="\n") as f:
             f.write(password)
     login_info = {
     "csrf_token": csrf_token,
