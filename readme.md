@@ -4,6 +4,7 @@ This is a repository for downloading samples from Atcoder automatically.
 - Python installed
 - bash
 - git (to clone this repository, you may download if you want)
+- MinGW(to execute makefile)
 # How to use
 - Clone (or download) this repository.
 - Delete the readme.
