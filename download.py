@@ -21,9 +21,9 @@ def getsession():
     else:
         username=input("Input your username: ")
         password = input("Input your password: ")
-        with open(USERPATH,mode="w",newline=None) as f:
+        with open(USERPATH,mode="w",newline="\r\n",encoding="utf-8") as f:
             f.write(username)
-        with open(PASSWORDPATH,mode="w",newline=None) as f:
+        with open(PASSWORDPATH,mode="w",newline="\r\n",encoding="utf-8") as f:
             f.write(password)
     login_info = {
     "csrf_token": csrf_token,
@@ -43,13 +43,13 @@ def returnurl():
             return f"https://atcoder.jp/contests/{nowdirectory[0:(len(nowdirectory)-1-i)]}/tasks/{nowdirectory}"
 def savetotest(ar):
     pathtotest = "./test"
-    print(ar)
+    newlineencoding="\n"
     if not os.path.exists(pathtotest):
         os.system("mkdir test")
     for i in range(0,len(ar),2):
-        with open(f"{pathtotest}/sample-{i//2}.in",mode="w",newline="\n") as f:
+        with open(f"{pathtotest}/sample-{i//2}.in",mode="w",newline=newlineencoding) as f:
             f.write(ar[i])
-        with open(f"{pathtotest}/sample-{i//2}.out",mode="w",newline="\n") as f:
+        with open(f"{pathtotest}/sample-{i//2}.out",mode="w",newline=newlineencoding) as f:
             f.write(ar[i + 1])
 def getsample(url,session):
     result = session.get(url)
