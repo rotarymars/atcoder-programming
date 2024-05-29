@@ -1,5 +1,9 @@
 #include <iostream>
-#include <vector>
+#ifdef _DEBUG
+#define DP(x) cout << #x << " = " << x << endl
+#else
+#define DP(x) ;
+#endif
 using namespace std;
 signed main()
 {
