@@ -7,8 +7,8 @@ all: $(BIN) $(SAMPLE)
 debugall: $(DEBUG_BIN) $(SAMPLE)
 	./test-sample.sh $(DEBUG_BIN) $(SRC)
 $(BIN): $(SRC)
-	g++ -std=gnu++23 -o $(BIN) $(SRC)
+	g++ -std=gnu++23 -O2 -o $(BIN) $(SRC)
 $(DEBUG_BIN): $(SRC)
-	g++ -std=gnu++23 -o $(DEBUG_BIN) $(SRC)
+	g++ -std=gnu++23 -O2 -o -$(DEBUG_BIN) $(SRC)
 $(SAMPLE):
 	python ../download.py
